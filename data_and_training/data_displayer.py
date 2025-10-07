@@ -6,14 +6,15 @@ from PIL import Image, ImageDraw
 # Constants (Loading reference image)
 ROOT = os.getcwd() + "/data/coco-2017/"
 CDIR = "validation/"
-with open(ROOT + CDIR + "labels.json", "r") as FILE:
+with open(ROOT + CDIR + "trimmed_labels.json", "r") as FILE:
     DATA = json.load(FILE)
 IMGM = DATA["images"][1]
 IMDC = Image.open(ROOT + CDIR + "data/" + IMGM["file_name"], "r")
-DRAWMODE = "seg"	# "box" or "seg"
-COLORDICT = {49:"purple",50:"blue",51:"green",52:"yellow",53:"red",55:"orange"}
-# 49: knives, 50: spoons, 51: bowls, 52: bananas, 53: apples, 55: oranges
-
+DRAWMODE = "box"	# "box" or "seg"
+#COLORDICT = {49:"purple",50:"blue",51:"green",52:"yellow",53:"red",55:"orange"}
+# ORIGINAL COCO LABELS: 49: knives, 50: spoons, 51: bowls, 52: bananas, 53: apples, 55: oranges
+COLORDICT = {0:"purple",1:"blue",2:"green",3:"yellow",4:"red",5:"orange"}
+# LABELS AFTER GOING THROUGH data_preprocessor.py: 0: knives, 1: spoons, 2: bowls, 3: bananas, 4: apples, 5: oranges
 
 # Reference image exploration, processing, outputting
 print("Exploring reference image:\n" + ROOT + CDIR + "data/" + IMGM["file_name"] + "\nWith id: " + str(IMGM["id"]))
@@ -21,7 +22,7 @@ print()
 imgDrawer = ImageDraw.Draw(IMDC)
 
 for annotation in DATA["annotations"]:
-	if ((annotation["image_id"] == IMGM["id"]) and (annotation["category_id"] in [49,50,51,52,53,55])):
+	if ((annotation["image_id"] == IMGM["id"]) and (annotation["category_id"] in list(COLORDICT.keys()))):
 		print(annotation)
 		print()
 
@@ -39,7 +40,7 @@ for annotation in DATA["annotations"]:
 					segCoordList.append((round(pointlist[0]),round(pointlist[1])))
 					imgDrawer.line(segCoordList, fill = COLORDICT[annotation["category_id"]], width = 0)
 			case _:
-				pass
+				raise Exception("Unsupported DRAWMODE")
 
 print()
 IMDC.show()

@@ -1,8 +1,5 @@
-`data_displayer.py`:
-choose a random image from a dataset and display it along with all the relevant annotations (bbox and/or segmentation)
-
-`data_preprocessor.py`:
-figure out the appropriate format for the images, annotations etc for your mobilenet build, reformat your data accordingly
+`data_pipeline.sh`:
+everything that needs to be done to the data before training, starting with downloading, trimming, turning into tfrecords etc. Currently following this official tensorflow guide: https://www.tensorflow.org/tfmodels/vision/object_detection and attempting to integrate this script to my project: https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_coco_tf_record.py
 
 `mobilenet_trainer.py`:
 using the preformatted data: train a mobilenet-ssd-v2 with the preformatted data and save it in a tensorflow.js format
