@@ -1,5 +1,5 @@
-import os
 import fiftyone
+import os
 
 # Configuring download folder
 fiftyone.config.dataset_zoo_dir = os.getcwd() + "/data"
