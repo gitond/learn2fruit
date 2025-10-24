@@ -1,5 +1,5 @@
-`data_pipeline.sh`:
-everything that needs to be done to the data before training, starting with downloading, trimming, turning into tfrecords etc. Currently following this official tensorflow guide: https://www.tensorflow.org/tfmodels/vision/object_detection and attempting to integrate this script to my project: https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_coco_tf_record.py NOTE: need to install object_detection library from repo and rebuild entire venv with older python version!!
-
-`mobilenet_trainer.py`:
-using the preformatted data: train a mobilenet-ssd-v2 with the preformatted data and save it in a tensorflow.js format
+Oct 24 next steps:
+ 4. Model config & hyperparameters
+   - Download a model from the TF2 detection model zoo (https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/2.2.0/training.html?utm_source=chatgpt.com#download-pre-trained-model)
+   - edit pipeline config as necessary
+   - might need additional editing of dataset

@@ -11,9 +11,9 @@ ARGS = PARSER.parse_args()
 CDIR = ARGS.CDIR
 with open(ROOT + "/" + CDIR + "/labels.json", "r") as INFILE:
     DATA = json.load(INFILE)
-CONVERSIONDICT = {49: 0, 50: 1, 51: 2, 52: 3, 53: 4, 55: 5}
+CONVERSIONDICT = {49: 1, 50: 2, 51: 3, 52: 4, 53: 5, 55: 6}
 # 49: knives, 50: spoons, 51: bowls, 52: bananas, 53: apples, 55: oranges
-
+# 0 isn't a key in coco, so starting CONVERSIONDICT at 0 would cause issues
 
 # "trim" labels; only keep annotations we're interested in
 myAnnotations = []

@@ -31,4 +31,39 @@
 
 #########################################
 
+# Library & Tool imports
 from create_coco_tf_record import _create_tf_record_from_coco_annotations
+import os
+
+# Constants
+PROJECT_ROOT = os.getcwd()	# NOTE: ALWAYS RUN THIS FROM PROJECT ROOT (~/.../learn2fruit)
+DSDIR = PROJECT_ROOT + "/data_and_training/data/coco-2017/"
+
+
+
+
+### json to tfrecord conversion ###
+
+# Command format:
+#_create_tf_record_from_coco_annotations(annotations_file, image_dir,
+#output_path, include_masks,
+#num_shards,
+#keypoint_annotations_file='',
+#densepose_annotations_file='',
+#remove_non_person_annotations=False,
+#remove_non_person_images=False)
+
+# About include_masks:
+# We just want to use the trained ai to detect where the trackable objects are;
+# at this point no need to do instance segmentation. I'll leave this as False
+# for the time being.
+
+# About num_shards:
+# I'll just follow the tensorflow object detection example
+# (https://www.tensorflow.org/tfmodels/vision/object_detection) and set this
+# to 1.
+
+# The actual commands:
+_create_tf_record_from_coco_annotations(DSDIR + "/train/trimmed_labels.json", DSDIR + "/train/data", DSDIR + "/train/tfrecords/", False, 1)
+_create_tf_record_from_coco_annotations(DSDIR + "/test/labels.json", DSDIR + "/test/data", DSDIR + "/test/tfrecords/", False, 1)
+_create_tf_record_from_coco_annotations(DSDIR + "/validation/trimmed_labels.json", DSDIR + "/validation/data", DSDIR + "/validation/tfrecords/", False, 1)
