@@ -4,3 +4,5 @@ data_and_training/data/
 data_and_training/devtools/create_coco_tf_record.py
 data_and_training/devtools/models
 data_and_training/devtools/__pycache__
+data_and_training/models/ssd_mobilenet_v2_320x320_coco17_tpu-8
+data_and_training/models/ssd_mobilenet_v2_320x320_coco17_tpu-8.tar.gz

@@ -62,6 +62,11 @@ mkdir data/coco-2017/validation/tfrecords
 # Now let's run my driver
 python3 devtools/cocoann2tfrecord.py
 
+# And let's deal with the annoyingly named output file it produces
+for split in "train" "test" "validation"; do
+	mv data/coco-2017/"$split"/tfrecords/-00000-of-00001 data/coco-2017/"$split"/tfrecords/"$split".record;
+done
+
 # Current datastructure should look like:
 # data/
 # └── coco-2017/
@@ -70,6 +75,6 @@ python3 devtools/cocoann2tfrecord.py
 #     │   ├── labels.json
 #     │   └── trimmed_labels.json	# This doesn't exist in the test split!
 #     └── tfecords
-#         └── -00000-of-00001
+#         └── split.record
 # , where:
 # split ∈ {train,test,validation}
