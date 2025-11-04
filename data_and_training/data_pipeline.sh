@@ -1,13 +1,20 @@
 ### DEPENDENCIES ###
-# Python libraries (pip install or standard library):
-# __future__, argparse, contextlib, fiftyone, hashlib, io, json, logging,
-# numpy, os, PIL, pycocotools, tensorflow
 
-# Python files:
+## Python libraries ##
+
+# From the standard library:
+# __future__, argparse, contextlib, hashlib, io, json, logging, os
+
+# From PyPI (Python Package Index; obtain through pip install):
+# fiftyone, numpy, PIL, pycocotools, tensorflow
+
+# Need to be manually installed from source:
+# object_detection	(installation instructions in: devtools/cocoann2tfrecord.py)
+
+
+
+## Python files ##
 # devtools/create_coco_tf_record.py	from https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_coco_tf_record.py
-
-# Modified python libraries (manual installing):
-# object_detection			(instructions in: devtools/cocoann2tfrecord.py)
 
 
 

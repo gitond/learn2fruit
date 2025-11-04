@@ -23,6 +23,9 @@
 # Compile the object_detection protos. This requires the protoc compiler.
 #protoc object_detection/protos/*.proto --python_out=.
 
+# Copy setup.py into models/research so pip can register the package root.
+#cp -i object_detection/packages/tf2/setup.py
+
 # Install the local object_detection package (no deps).
 #python3 -m pip install --no-deps .
 
@@ -36,8 +39,8 @@ from create_coco_tf_record import _create_tf_record_from_coco_annotations
 import os
 
 # Constants
-PROJECT_ROOT = os.getcwd()	# NOTE: ALWAYS RUN THIS FROM PROJECT ROOT (~/.../learn2fruit)
-DSDIR = PROJECT_ROOT + "/data_and_training/data/coco-2017/"
+PROJECT_ROOT = os.getcwd()[:os.getcwd().index("learn2fruit")+len("learn2fruit")]
+DSDIR = PROJECT_ROOT + "/data_and_training/data/coco-2017"
 
 
 
