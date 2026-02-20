@@ -23,9 +23,7 @@
 
 
 ### DOWNLOADING DATA ###
-python3 data_downloader.py
-# Note: line 13 has a `max_samples` variable. This may limit how much data is
-# downloaded. Make sure you aren't limited by this.
+python3 data_downloader.py --max_samples 1800
 
 # Current datastructure:
 # data/
